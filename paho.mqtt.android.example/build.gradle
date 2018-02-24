@@ -1,0 +1,52 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion '26.0.0'
+
+    defaultConfig {
+        applicationId "paho.mqtt.java.example"
+        minSdkVersion 16
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    dexOptions {
+        preDexLibraries = false
+    }
+    lintOptions {
+        abortOnError false
+    }
+    buildToolsVersion '25.0.0'
+}
+
+repositories {
+    maven { url rootProject.ext.mavenUrl }
+}
+
+
+dependencies {
+    compile fileTree(include: '*.jar', excludes: [], dir: 'libs')
+    compile "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
+    compile "com.android.support:design:${rootProject.ext.supportLibVersion}"
+    compile "com.android.support:recyclerview-v7:${rootProject.ext.supportLibVersion}"
+    compile "org.eclipse.paho:org.eclipse.paho.client.mqttv3:${rootProject.ext.clientVersion}"
+    compile(project(':org.eclipse.paho.android.service'))
+    /* {
+        //exclude module: "org.eclipse.paho.client.mqttv3"
+        transitive = true
+    }*/
+    compile 'com.android.support.constraint:constraint-layout:1.0.0'
+    testCompile 'junit:junit:4.12'
+}
+
+configurations.compile.exclude module: 'org.eclipse.paho.client.mqttv3'
+task debug << {
+    configurations.compile.each { println it }
+}
