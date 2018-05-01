@@ -1,4 +1,5 @@
 # 项目源码是从eclipse 的paho.mqtt.android项目下载下来改造的。
+https://github.com/eclipse/paho.mqtt.android.git
 # 项目结构
 - org.eclipse.paho.android.service 是项目依赖核心
 - org.eclipse.paho.android.sample 是paho.mqtt.android自带的demo示例
@@ -11,7 +12,14 @@
 可以参照这篇文章安装mosquitto windows客户端
 https://blog.csdn.net/wolinghuanyun/article/details/53492189
 安装的时候遇到的几个错误,缺少ddl文件全部在这里
-https://pan.baidu.com/s/1Ij9ektRm5QlQPkJTLNeqRw可以下载，下载后覆盖就行。
+https://pan.baidu.com/s/1Ij9ektRm5QlQPkJTLNeqRw
+可以下载，下载后覆盖就行。
+装好之后启动mosquitto 服务端
+执行
+``
+D:\liangzhenghui\mqtt\mosquitto-window\mosquitto>mosquitto -c mosquitto.conf
+
+``
 运行起来APP之后
 给主题 exampleAndroid 推送信息
 ``
